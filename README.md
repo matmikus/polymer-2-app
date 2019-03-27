@@ -1,0 +1,2 @@
+# polymer-as-script
+test
