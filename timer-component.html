@@ -3,17 +3,40 @@
 <dom-module id="timer-component">
   <template>
     <style>
-      :host {
-        font-family: sans-serif;
+      div {
+        font-size: 10em;
+        margin: 32px;
+        text-align: center;
       }
     </style>
     
-    <div>hello from timer component</div>
+    <div style$="color: [[color]]">[[timerValue]]</div>
   </template>
   
   <script>
-    Polymer({
-      is: "timer-component"
-    });
+    class TimerComponent extends Polymer.Element {
+      static get is() { return "timer-component" }
+  
+      constructor() {
+        super()
+        this.setTimer(0)
+      }
+  
+      static get properties() {
+        return {
+          color: String,
+          timerValue: String
+        }
+      }
+      
+      setTimer (value) {
+        this.timerValue = value
+        
+        setTimeout(() => {
+          this.setTimer(value + 1)
+        }, 1000)
+      }
+    }
+    customElements.define(TimerComponent.is, TimerComponent)
   </script>
 </dom-module>
