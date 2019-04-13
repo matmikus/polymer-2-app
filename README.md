@@ -1,2 +1,2 @@
-# polymer-as-script
+# polymer-2-app
 test
